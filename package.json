@@ -20,6 +20,9 @@
   "author": "Martand Singh (sniffer)",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.87.0"
+    "axios": "^1.2.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "xhr": "^2.6.0"
   }
 }

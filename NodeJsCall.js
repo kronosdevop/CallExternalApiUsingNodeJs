@@ -1,28 +1,48 @@
+const request = require('request')
 
-const https = require('https');
+async function callApi(req, res){
+    let options = {
+        method : 'GET' ,
+        url :'https://api.stg.platform.my-1.nymcard.com/v1/ ',
+        header: {
+            'NYMCARDS_API_TOKEN': 'tenant2-1a15almf-4054-4564-a59a-mn0957a0e094'
+        },
+    }
+	request(options, function (error, response, body) {
+		if (error) throw new Error(error);
+	// console.log
+	res.status(200).send(body); 
+	
+		
+	});
+// let res = await request(options)
+// console.log(res)
+//  return res;
+    }
+module.exports={callApi}
  
-_EXTERNAL_URL = 'https://test-proj-heroku.herokuapp.com/api/plans';
+// // module.exports={callApi}
+// const http = require("https");
 
+// const options = {
+// 	"method": "GET",
+//     "url" : "https://api.stg.platform.my-1.nymcard.com/v1/ ",
+// 	"headers": {
+// 		"NYMCARDS_API_TOKEN": "tenant2-1a15almf-4054-4564-a59a-mn0957a0e094"
+// 	}
+// };
 
-const callExternalApiUsingHttp = (callback) => {
-    https.get(_EXTERNAL_URL, (resp) => {
-    let data = '';
-    
-    // A chunk of data has been recieved.
-    resp.on('data', (chunk) => {
-        data += chunk;
-    });
-    
-    // The whole response has been received. Print out the result.
-    resp.on('end', () => {
-        return callback(data);
-       // console.log(JSON.stringify(data));
-    });
-    
-    }).on("error", (err) => {
-       
-    console.log("Error: " + err.message);
-    });
-}
+// const req = http.request(options, function (res) {
+// 	const chunks = [];
 
-module.exports.callApi = callExternalApiUsingHttp;
+// 	res.on("data", function (chunk) {
+// 		chunks.push(chunk);
+// 	});
+
+// 	res.on("end", function () {
+// 		const body = Buffer.concat(chunks);
+// 		console.log(body.toString());
+// 	});
+// });
+
+// req.end();
